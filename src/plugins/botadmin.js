@@ -9,7 +9,7 @@ const {
 const {
     text
 } = MessageType;
-const sql = require(path.join(__dirname, "../snippets/ps"));
+const {sql,redis} = require(path.join(__dirname, "../snippets/ps"));
 const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
     let infor5 = { ...infor4 };
     let xxx = { ...xxx3 };
@@ -42,8 +42,8 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
 
 
         case "xstp":
-            let data = await sql.query('select * from botdata');
-            client.sendMessage(`${process.env.OWNER_NUMBER}@s.whatsapp.net`, "‼️‼️ ```Bot stopped ‼️‼️\nTo start the bot log in the website and click on Start bot button.\n```" + "```" + data.rows[0].boturl + "```", text, {
+
+            client.sendMessage(`${process.env.OWNER_NUMBER}@s.whatsapp.net`, "‼️‼️ ```Bot stopped ‼️‼️\nTo start the bot log in the website and click on Start bot button.\n```" + "```" + infor5.botdata.boturl + "```", text, {
                 quoted: xxx,
                 detectlink: false
             });
@@ -85,6 +85,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
             client.sendMessage(from, mess.success, text, {
                 quoted: xxx,
             });
+
             resolve();
             break;
 
@@ -108,6 +109,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 return;
             }
             sql.query(`update botdata set dailylimit = '${infor5.arg[1]}'`).then(result => {
+                redis.hmset('botdata', { dailylimit: infor5.arg[1] })
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
                 }).catch(err => {
@@ -141,6 +143,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 return;
             }
             sql.query(`update botdata set mingroupsize = '${infor5.arg[1]}'`).then(result => {
+                redis.hmset('botdata', { mingroupsize: infor5.arg[1] });
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
                 }).catch(err => {
@@ -174,6 +177,8 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 return;
             }
             sql.query(`update botdata set dailygrouplimit = '${infor5.arg[1]}'`).then(result => {
+                redis.hmset('botdata', { dailygrouplimit: infor5.arg[1] });
+
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
                 }).catch(err => {
@@ -203,10 +208,12 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
             z = infor5.arg[1];
             sql.query(
                 `UPDATE botdata SET moderators = array_append(moderators, '${z.replace('@', '')}');`
-            ).then(result => {
+            ).then(async () => {
+                let botd = await sql.query("select * from botdata;")
+                redis.hmset('botdata', botd);
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
-                }).catch(err => {
+                }).catch(() => {
                     client.sendMessage(from, mess.error.error, text, {
                         quoted: xxx,
                     });

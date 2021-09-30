@@ -16,14 +16,14 @@ const sourcecode = (infor4, client, xxx3) => new Promise((resolve, reject) => {
 
             msg = "🧠🧠 *Sharing is caring* 🧠🧠\n\n" +
                 "🐱‍👤 *Github Repository-*\n```https://github.com/akm-akm/xxx-bot```\n\n"+
-                "👨‍💻 *Repo Owner:* ```" + data.owner.login + "```\n" +
-                "💻 *Repo Name:*  ```" + data.name + "```\n" +
+                "👨‍💻 *Repo Owner:* ```akm-akm```\n" +
+                "💻 *Repo Name:*  ```xxx-bot```\n" +
                // "🪀 *Desc:*              ```" + data.description + "```\n" +
-                "🉐 *Language:*     ```" + data.language + "```\n" +
+                "🉐 *Language:*     ```Javascript```\n" +
                 "⭐ *Stars:*             ```" + data.stargazers_count + "```\n" +
                 "🔀 *Forks:*            ```" + data.forks_count + "```\n" +
-                "🧰 *Issues:*           ```" + data.open_issues + "```\n" +
-                "🎨 *Watchers:*      ```" + data.watchers_count + "```\n" +
+                "🧰 *Issues:*           ```1```\n" +
+                "🎨 *Watchers:*      ```1```\n" +
                 "💾 *Size:*               ```" + (data.size / 1024).toFixed(0) + " KB```\n"+
                 "📄 *License:*         ```" + data.license.key + " ```\n"+
                 "\n🤖🤖 *_Bot made by AKM_* 🤖🤖"

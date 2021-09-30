@@ -33,6 +33,7 @@
   "dependencies": {
     "@adiwajshing/baileys": "^3.5.2",
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "async-redis": "^2.0.0",
     "axios": "^0.21.1",
     "chalk": "^4.1.2",
     "deepai": "^1.0.17",
@@ -41,6 +42,7 @@
     "node-cron": "^3.0.0",
     "pg": "^8.6.0",
     "qr-image": "^3.2.0",
+    "redis": "^3.1.2",
     "request": "^2.88.2",
     "twitter": "^1.7.1",
     "wa-sticker-formatter": "^3.6.0",

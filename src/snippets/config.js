@@ -1,5 +1,5 @@
 const path = require("path");
-const sql = require(path.join(__dirname, "./ps"));
+const {sql,redis} = require(path.join(__dirname, "./ps"));
 const { main } = require(path.join(__dirname, "../events/events.js"));
 
 const chalk = require('chalk');
@@ -27,7 +27,8 @@ const chalk = require('chalk');
     try {
         let bdata = await sql.query('select * from botdata');
         let botdata = bdata.rows[0];
-        if (botdata.isconnected || process.env.NODE_ENV !== "production") main()
+        redis.hmset('botdata', botdata);
+     //   if (botdata.isconnected || process.env.NODE_ENV !== "production") main()
 
     } catch (error) {
         console.log(chalk.bgRed("Creating botdata table"));
@@ -40,8 +41,10 @@ const chalk = require('chalk');
     }
 
     try {
-        await sql.query('select * from groupdata');
-
+      const groupdata =  await sql.query('select * from groupdata');
+        groupdata.rows[0].forEach(eachgroup => {
+            redis.hmset(eachgroup.from, eachgroup);
+        });
     } catch (error) {
         console.log(chalk.bgRed("Creating groupdata table"));
         await sql.query(
@@ -50,7 +53,10 @@ const chalk = require('chalk');
     }
 
     try {
-        await sql.query('select * from messagecount');
+       const messagecount = await sql.query('select * from messagecount');
+        messagecount.rows[0].forEach(eachperson => {
+            redis.hmset(eachperson.phonenumber, eachperson);
+        });
     } catch (error) {
         console.log(chalk.bgRed("Creating messagecount table"));
         await sql.query(
