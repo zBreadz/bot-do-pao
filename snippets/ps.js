@@ -1,8 +1,6 @@
 const { Pool } = require("pg");
 const asyncRedis = require("async-redis");
-const redis = asyncRedis.createClient({
-  host: process.env.REDIS_HOST || '127.0.0.1'
-});
+const redis = asyncRedis.createClient({host: process.env.REDIS_HOST || '127.0.0.1'});
 redis.on('connect', () => console.log("Redis connected", process.env.LOCAL_DATABASE_URL))
 let credentials = {};
 if (process.env.HOSTING_PLATFORM === "local") {
@@ -15,8 +13,6 @@ if (process.env.HOSTING_PLATFORM === "local") {
     ssl: { rejectUnauthorized: false }
   };
 }
-
-
 const postgres = new Pool(credentials)
 sql = (text,param) =>  postgres.query(text,param) ;
 module.exports.sql = sql;

@@ -9,7 +9,7 @@ const {
 const {
     text
 } = MessageType;
-const {sql,redis} = require(path.join(__dirname, "../snippets/ps"));
+const { sql, redis } = require(path.join(__dirname, "../snippets/ps"));
 const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
     let infor5 = { ...infor4 };
     let xxx = { ...xxx3 };
@@ -23,8 +23,8 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
 
         case "xxx":
             const buttons = [
-                { buttonId: 'stp1', buttonText: { displayText: 'button1' }, type: 1 },
-                { buttonId: 'stp1', buttonText: { displayText: 'button2' }, type: 1 },
+                { buttonId: 'stp1', buttonText: { displayText: 'useless button' }, type: 1 },
+                { buttonId: 'stp1', buttonText: { displayText: 'useless button' }, type: 1 },
                 { buttonId: 'stp1', buttonText: { displayText: 'button3' }, type: 1 },
             ]
             const buttonMessage = {
@@ -109,21 +109,14 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 resolve();
                 return;
             }
-            sql.query(`update botdata set dailylimit = '${infor5.arg[1]}'`).then(result => {
-                require(path.join(__dirname, "../snippets/config"))
-                client.sendMessage(from, mess.success, text, {
-                    quoted: xxx,
-                }).catch(err => {
-                    client.sendMessage(from, mess.error.error, text, {
-                        quoted: xxx,
-                    });
-                })
-                resolve();
+            sql.query(`update botdata set dailylimit = '${infor5.arg[1]}'`)
+            infor5.botdata.dailylimit = infor5.arg[1];
+            redis.set('botdata', JSON.stringify(infor5.botdata));
+            client.sendMessage(from, mess.success, text, {
+                quoted: xxx,
             })
-
+            resolve();
             break;
-
-
 
 
 
@@ -143,22 +136,15 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 resolve();
                 return;
             }
-            sql.query(`update botdata set mingroupsize = '${infor5.arg[1]}'`).then(result => {
-                require(path.join(__dirname, "../snippets/config"))
-                client.sendMessage(from, mess.success, text, {
-                    quoted: xxx,
-                }).catch(err => {
-                    client.sendMessage(from, mess.error.error, text, {
-                        quoted: xxx,
-                    });
-                })
-                resolve();
+            sql.query(`update botdata set mingroupsize = '${infor5.arg[1]}'`)
+            infor5.botdata.mingroupsize = infor5.arg[1];
+            redis.set('botdata', JSON.stringify(infor5.botdata));
+            client.sendMessage(from, mess.success, text, {
+                quoted: xxx,
             })
+            resolve();
+
             break;
-
-
-
-
 
 
 
@@ -177,24 +163,16 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 resolve();
                 return;
             }
-            sql.query(`update botdata set dailygrouplimit = '${infor5.arg[1]}'`).then(result => {
-                require(path.join(__dirname, "../snippets/config"))
+            sql.query(`update botdata set dailygrouplimit = '${infor5.arg[1]}'`);
+            infor5.botdata.dailygrouplimit = infor5.arg[1];
+            redis.set('botdata', JSON.stringify(infor5.botdata));
+            client.sendMessage(from, mess.success, text, {
+                quoted: xxx,
+            });
+            resolve();
 
-                client.sendMessage(from, mess.success, text, {
-                    quoted: xxx,
-                }).catch(err => {
-                    client.sendMessage(from, mess.error.error, text, {
-                        quoted: xxx,
-                    });
-                });
-                resolve();
-            })
 
             break;
-
-
-
-
 
 
 
@@ -209,26 +187,14 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
             z = infor5.arg[1];
             sql.query(
                 `UPDATE botdata SET moderators = array_append(moderators, '${z.replace('@', '')}');`
-            ).then( () => {
-                require(path.join(__dirname, "../snippets/config"))
-                client.sendMessage(from, mess.success, text, {
-                    quoted: xxx,
-                }).catch(() => {
-                    client.sendMessage(from, mess.error.error, text, {
-                        quoted: xxx,
-                    });
-                });
+            );
+            infor5.botdata.moderators.push[z.replace('@', '')];
+            redis.set('botdata', JSON.stringify(infor5.botdata));
+            client.sendMessage(from, mess.success, text, {
+                quoted: xxx,
             })
+
             break;
-
-
-
-
-
-
-
-
-
 
 
         case "rtrt":
