@@ -4,7 +4,7 @@ const port = process.env.PORT || 5000;
 const path = require("path");
 const node = require('node-cron');
 require(path.join(__dirname, "./snippets/config"));
-const sql = require(path.join(__dirname, "./snippets/ps"));
+const {sql} = require(path.join(__dirname, "./snippets/ps"));
 
 
 const {
@@ -18,9 +18,9 @@ const {
 ));
 
 node.schedule("0 */24 * * *", () => {
-  sql.query('UPDATE groupdata SET totalmsgtoday=0;')
-  sql.query('UPDATE botdata SET totalmsgtoday=0;')
-  sql.query('UPDATE messagecount SET totalmsgtoday=0,dailylimitover=false;')
+  sql('UPDATE groupdata SET totalmsgtoday=0;')
+  sql('UPDATE botdata SET totalmsgtoday=0;')
+  sql('UPDATE messagecount SET totalmsgtoday=0,dailylimitover=false;')
 
 })
 
@@ -42,9 +42,9 @@ server.get("/", (req, res) => {
 
 server.get("/login", async (req, res) => {
   main();
-  qqr = await sql.query("SELECT to_regclass('auth');")
+  qqr = await sql("SELECT to_regclass('auth');")
   if (qqr.rows[0].to_regclass == "auth") {
-    let qwer = await sql.query("SELECT * FROM auth;");
+    let qwer = await sql("SELECT * FROM auth;");
     auth_row_count = await qwer.rowCount;
     if (auth_row_count == 0) {
       res.send("absent")
@@ -77,8 +77,7 @@ server.get("/qr", async (req, res) => {
 
 server.post("/sql", async (req, res) => {
   console.log("query - " + req.body.query);
-  sql
-    .query(req.body.query)
+  sql(req.body.query)
     .then((result) => {
       res.send(result.rows);
     })
@@ -90,7 +89,7 @@ server.post("/sql", async (req, res) => {
 
 server.post("/auth", async (req, res) => {
   console.log('siteurl', req.body.siteurl);
-  sql.query(`UPDATE botdata SET boturl='${req.body.siteurl}';`)
+  sql(`UPDATE botdata SET boturl='${req.body.siteurl}';`)
   if (req.body.pass != process.env.WEBSITE_PASSWORD) {
     console.log(false);
     res.send("false");
@@ -118,9 +117,9 @@ server.get("/isconnected", async (req, res) => {
 });
 
 server.get("/isauthenticationfilepresent", async (req, res) => {
-  qqr = await sql.query("SELECT to_regclass('auth');")
+  qqr = await sql("SELECT to_regclass('auth');")
   if (qqr.rows[0].to_regclass == "auth") {
-    let qwer = await sql.query("SELECT * FROM auth;");
+    let qwer = await sql("SELECT * FROM auth;");
     auth_row_count = await qwer.rowCount;
     if (auth_row_count == 0) {
       res.send("absent")

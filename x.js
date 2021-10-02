@@ -1,15 +1,56 @@
 const asyncRedis = require('async-redis');
 const redis = asyncRedis.createClient();
-redis.hmset('botdata', {
-    'javascript': 'ReactJS',
-    'css': 'TailwindCSS',
-    'node': 'dzvdvr'
-});
+
+//  redis.set('from', JSON.stringify(gd));
+
 (async () => {
-    q = await redis.hgetall('botdata');
-    console.log(q);
+    q = await redis.get('919013722149-1604682527@g.us');
+    console.log(JSON.parse(q));
     redis.quit()
-})()
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 String.prototype.hash = function () {
     let hash = 0, i, chr;

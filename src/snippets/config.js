@@ -1,9 +1,11 @@
 const path = require("path");
-const {sql,redis} = require(path.join(__dirname, "./ps"));
+const { sql, redis } = require(path.join(__dirname, "./ps"));
 const { main } = require(path.join(__dirname, "../events/events.js"));
 
 const chalk = require('chalk');
 (botsettingcheck = () => new Promise(async () => {
+    console.log(chalk.bgRed("CONFIG CHECK IS RUNNING"));
+
     if (!process.env.WEBSITE_PASSWORD) {
         console.log(chalk.bgRed("WEBSITE_PASSWORD is not set"));
         process.exit(1)
@@ -25,43 +27,45 @@ const chalk = require('chalk');
         process.exit(1)
     }
     try {
-        let bdata = await sql.query('select * from botdata');
+        let bdata = await sql('select * from botdata');
         let botdata = bdata.rows[0];
-        redis.hmset('botdata', botdata);
-     //   if (botdata.isconnected || process.env.NODE_ENV !== "production") main()
+        redis.set('botdata', JSON.stringify(botdata));
+         if (botdata.isconnected || process.env.NODE_ENV !== "production") main()
 
     } catch (error) {
         console.log(chalk.bgRed("Creating botdata table"));
 
-        await sql.query(
+        await sql(
             "CREATE TABLE IF NOT EXISTS botdata (isconnected BOOL, isregistered BOOL, allowinboxuse BOOL, allowabuse BOOL, moderators TEXT[], banned_users TEXT[], boturl TEXT, totalmsgtoday INT, totalmsg INT, dailylimit INT, dailygrouplimit INT,  mingroupsize INT);"
         );
-        await sql.query(`INSERT INTO botdata VALUES (false, false, true, false, '{''}' , '{''}','', 0, 0,999999,99999999,3);`)
+        await sql(`INSERT INTO botdata VALUES (false, false, true, false, '{''}' , '{''}','', 0, 0,999999,99999999,3);`)
         botsettingcheck();
     }
 
     try {
-      const groupdata =  await sql.query('select * from groupdata');
-        groupdata.rows[0].forEach(eachgroup => {
-            redis.hmset(eachgroup.from, eachgroup);
+        const groupdata = await sql('select * from groupdata');
+        groupdata.rows.forEach(eachgroup => {
+           
+            redis.set(eachgroup.groupid, JSON.stringify(eachgroup));
         });
     } catch (error) {
-        console.log(chalk.bgRed("Creating groupdata table"));
-        await sql.query(
+        console.log(error ,chalk.bgRed("Creating groupdata table"));
+        await sql(
             "CREATE TABLE IF NOT EXISTS groupdata (groupid TEXT, useprefix BOOL, prefix TEXT, allowabuse BOOL, membercanusebot BOOL, banned_users TEXT[], totalmsgtoday INT, totalmsg INT, autosticker BOOL, nsfw BOOL);"
         );
     }
 
     try {
-       const messagecount = await sql.query('select * from messagecount');
-        messagecount.rows[0].forEach(eachperson => {
+        const messagecount = await sql('select * from messagecount');
+        messagecount.rows.forEach(eachperson => {
             redis.hmset(eachperson.phonenumber, eachperson);
         });
     } catch (error) {
         console.log(chalk.bgRed("Creating messagecount table"));
-        await sql.query(
+        await sql(
             "CREATE TABLE IF NOT EXISTS messagecount (phonenumber TEXT, totalmsgtoday INT, totalmsg INT, dailylimitover BOOL);"
         );
     }
-    
+
 }))();
+

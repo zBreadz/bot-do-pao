@@ -1,11 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 const http = require("https");
-const sql = require(path.join(__dirname, "../snippets/ps"));
-const settings = JSON.parse(
+const {sql,redis } = require(path.join(__dirname, "../snippets/ps"));
+const settings = JSON.stringify(
   fs.readFileSync(path.join(__dirname, "../data/settings.json"))
 );
-const mess = JSON.parse(
+const mess = JSON.stringify(
   fs.readFileSync(path.join(__dirname, "../data/warningmessages.json"))
 );
 const {
@@ -125,17 +125,19 @@ const grp = (infor4, client, xxx3) =>
           return;
         }
         if (arg[1] == "off") {
-          sql.query(`UPDATE groupdata SET autosticker = false WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET autosticker = false WHERE groupid = '${from}'`);
           client.sendMessage(from, "🤖 ```Automatic sticker turned off.```", text, {
             quoted: xxx,
           });
           resolve();
           return;
         } else if (arg[1] == "on") {
-          sql.query(`UPDATE groupdata SET autosticker = true WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET autosticker = true WHERE groupid = '${from}'`);
           client.sendMessage(from, "🤖 ```Automatic sticker turned on.```", text, {
             quoted: xxx,
-          });
+          });  bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
           resolve();
           return;
         } else {
@@ -154,14 +156,17 @@ const grp = (infor4, client, xxx3) =>
           return;
         }
         if (arg[1] == "off") {
-          sql.query(`UPDATE groupdata SET nsfw = false WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET nsfw = false WHERE groupid = '${from}'`);
           client.sendMessage(from, "🤖 ```NSFW detection turned off.```", text, {
             quoted: xxx,
           });
           resolve();
           return;
         } else if (arg[1] == "on") {
-          sql.query(`UPDATE groupdata SET nsfw = true WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET nsfw = true WHERE groupid = '${from}'`);
+           bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
           client.sendMessage(from, "🤖 ```NSFW detection turned on.```", text, {
             quoted: xxx,
           });
@@ -182,14 +187,16 @@ const grp = (infor4, client, xxx3) =>
           return;
         }
         if (arg[1] == "off") {
-          sql.query(`UPDATE groupdata SET useprefix = false WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET useprefix = false WHERE groupid = '${from}'`);
           client.sendMessage(from, "🤖 ```The bot will only listen for commands starting without the given prefix.```", text, {
             quoted: xxx,
           });
           resolve();
           return;
         } else if (arg[1] == "on") {
-          sql.query(`UPDATE groupdata SET useprefix = true WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET useprefix = true WHERE groupid = '${from}'`);
+           bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
           client.sendMessage(from, "🤖 ```The bot will only listen for commands starting with ```" + infor5.groupdata.prefix, text, {
             quoted: xxx,
           });
@@ -210,14 +217,17 @@ const grp = (infor4, client, xxx3) =>
           return;
         }
         if (arg[1] == "off") {
-          sql.query(`UPDATE groupdata SET membercanusebot= false WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET membercanusebot= false WHERE groupid = '${from}'`);
           client.sendMessage(from, "🤖 ```Bot access disabled for non admins.```", text, {
             quoted: xxx,
           });
+           bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
           resolve();
           return;
         } else if (arg[1] == "on") {
-          sql.query(`UPDATE groupdata SET membercanusebot= true WHERE groupid = '${from}'`);
+          await sql(`UPDATE groupdata SET membercanusebot= true WHERE groupid = '${from}'`);
           client.sendMessage(from, "🤖 ```Bot access enabled for non admins.```", text, {
             quoted: xxx,
           });
@@ -244,9 +254,12 @@ const grp = (infor4, client, xxx3) =>
           resolve();
           return;
         }
-        sql.query(
+        await sql(
           `UPDATE groupdata SET prefix = '${arg[1]}' where groupid = '${from}';`
         );
+         bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
         client.sendMessage(from, "🚨 ```Prefix set to " + arg[1] + "```", text, {
           quoted: xxx,
         });
@@ -410,7 +423,7 @@ const grp = (infor4, client, xxx3) =>
           });
         resolve();
         const encmedia = isQuotedImage ?
-          JSON.parse(JSON.stringify(xxx).replace("quotedM", "m")).message
+          JSON.stringify(JSON.stringify(xxx).replace("quotedM", "m")).message
             .extendedTextMessage.contextInfo :
           xxx;
         const media = await client.downloadAndSaveMediaMessage(encmedia);
@@ -547,7 +560,7 @@ const grp = (infor4, client, xxx3) =>
           return;
         }
         if (arg[1] == "off") {
-          sql.query(
+          await sql(
             `UPDATE groupdata SET allowabuse = 'true' WHERE groupid = '${from}';`
           );
           client.sendMessage(from, "🤬 ```Now the bot will not abuse back if it is abused!```", text, {
@@ -556,12 +569,15 @@ const grp = (infor4, client, xxx3) =>
           resolve();
           return;
         } else if (arg[1] == "on") {
-          sql.query(
+          await sql(
             `UPDATE groupdata SET allowabuse = 'false' WHERE groupid = '${from}';`
           );
           client.sendMessage(from, "🙏 ```Now the bot will abuse back if it is abused!```", text, {
             quoted: xxx,
           });
+           bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
           resolve();
           return;
         } else {
@@ -586,9 +602,12 @@ const grp = (infor4, client, xxx3) =>
           client.sendMessage(from, "🤖 ```I can't ban myself, but I can ban you! There you go!``` _BANNED_", text, {
             quoted: xxx,
           });
-          sql.query(
+          await sql(
             `UPDATE groupdata SET banned_users = array_append(banned_users, '${infor5.number}') where groupid = '${from}';`
           );
+          bb = await sql(`select * from groupdata where groupid = '${from}';`);
+          redis.set(from,JSON.stringify(bb.rows[0]));
+
           resolve()
           return;
         }
@@ -600,12 +619,15 @@ const grp = (infor4, client, xxx3) =>
           return;
         }
 
-        await sql.query(
+        await sql(
           `UPDATE groupdata SET banned_users = array_remove(banned_users, '${z}') where groupid = '${from}';`
         );
-        sql.query(
+        await sql(
           `UPDATE groupdata SET banned_users = array_append(banned_users, '${z}') where groupid = '${from}';`
         );
+        bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
 
         client.sendMessage(from, "🥲 ```He can not use me now!```", text, {
           quoted: xxx,
@@ -623,9 +645,17 @@ const grp = (infor4, client, xxx3) =>
 
         mentioned = xxx.message.extendedTextMessage.contextInfo.mentionedJid;
         z = mentioned[0].split("@")[0];
-        sql.query(
-          `UPDATE groupdata SET banned_users = array_remove(banned_users, '${z}') where groupid = '${from}';`
-        );
+
+
+
+
+        await sql(`UPDATE groupdata SET banned_users = array_remove(banned_users, '${z}') where groupid = '${from}';`);
+        bb = await sql(`select * from groupdata where groupid = '${from}';`);
+        redis.set(from,JSON.stringify(bb.rows[0]));
+
+
+
+
         client.sendMessage(from, "🙂 ```Unbanned```", text, {
           quoted: xxx,
         });
@@ -635,12 +665,12 @@ const grp = (infor4, client, xxx3) =>
       case "banlist":
         bannedlist = infor5.groupdata.banned_users;
         if (bannedlist.length == 1) {
-          client.sendMessage(from, "🤔 ```No members banned.```", text, {
+          client.sendMessage(from, "🤔 *No members banned*", text, {
             quoted: xxx,
           });
           resolve();
         } else {
-          msg = "🤣 ```Members banned -```\n";
+          msg = "🤣 *Members banned*\n";
           bannedlist.shift()
           bannedlist.forEach((currentItem) => {
             msg += "\n🚨 " + currentItem;

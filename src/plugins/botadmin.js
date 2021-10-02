@@ -85,6 +85,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
             client.sendMessage(from, mess.success, text, {
                 quoted: xxx,
             });
+            require(path.join(__dirname, "../snippets/config"))
 
             resolve();
             break;
@@ -109,7 +110,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 return;
             }
             sql.query(`update botdata set dailylimit = '${infor5.arg[1]}'`).then(result => {
-                redis.hmset('botdata', { dailylimit: infor5.arg[1] })
+                require(path.join(__dirname, "../snippets/config"))
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
                 }).catch(err => {
@@ -143,7 +144,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 return;
             }
             sql.query(`update botdata set mingroupsize = '${infor5.arg[1]}'`).then(result => {
-                redis.hmset('botdata', { mingroupsize: infor5.arg[1] });
+                require(path.join(__dirname, "../snippets/config"))
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
                 }).catch(err => {
@@ -177,7 +178,7 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
                 return;
             }
             sql.query(`update botdata set dailygrouplimit = '${infor5.arg[1]}'`).then(result => {
-                redis.hmset('botdata', { dailygrouplimit: infor5.arg[1] });
+                require(path.join(__dirname, "../snippets/config"))
 
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
@@ -208,9 +209,8 @@ const owner = (infor4, client, xxx3) => new Promise(async (resolve, reject) => {
             z = infor5.arg[1];
             sql.query(
                 `UPDATE botdata SET moderators = array_append(moderators, '${z.replace('@', '')}');`
-            ).then(async () => {
-                let botd = await sql.query("select * from botdata;")
-                redis.hmset('botdata', botd);
+            ).then( () => {
+                require(path.join(__dirname, "../snippets/config"))
                 client.sendMessage(from, mess.success, text, {
                     quoted: xxx,
                 }).catch(() => {

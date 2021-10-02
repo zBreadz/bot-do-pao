@@ -45,17 +45,17 @@ module.exports = async function settingread(arg, from, sender, groupname, client
     Math.floor(Math.random() * settings.prefixchoice.length))
   try {
 
-    botdata = await sql.query(
+    botdata = await sql(
       "select * from botdata;"
     );
 
     if (from.endsWith("@g.us")) {
 
-      data1 = await sql.query(`select * from groupdata where groupid='${from}';`);
+      data1 = await sql(`select * from groupdata where groupid='${from}';`);
       if (data1.rows.length == 0) {
         if (process.env.NODE_ENV === 'development') {
           console.log("👪 " + chalk.bgCyan("Prefix assigned is / for group " + groupname));
-          await sql.query(
+          await sql(
             `INSERT INTO groupdata VALUES ('${from}','true','/','false','true', '{''}',0,0,false,true);`
           );
           return settingread(arg, from, sender, groupname)
@@ -69,7 +69,7 @@ module.exports = async function settingread(arg, from, sender, groupname, client
             return
           }
           newgroup(from, client, random).then(() => console.log("New group!"));
-          await sql.query(
+          await sql(
             `INSERT INTO groupdata VALUES ('${from}','true','${random}','false','true', '{''}',0,0,false,true);`
           );
           return settingread(arg, from, sender, groupname)
@@ -81,11 +81,11 @@ module.exports = async function settingread(arg, from, sender, groupname, client
       (number = sender.split("@")[0]) :
       (number = from.split("@")[0]);
 
-    data2 = await sql.query(
+    data2 = await sql(
       `select * from messagecount where phonenumber='${number}';`)
     if (data2.rows.length == 0) {
       console.log("👨 " + chalk.bgBlueBright("Entering data for  number -" + number));
-      await sql.query(`INSERT INTO messagecount VALUES ('${number}', 0, 0, false);`)
+      await sql(`INSERT INTO messagecount VALUES ('${number}', 0, 0, false);`)
       return settingread(arg, from, sender, groupname)
     }
 

@@ -2,7 +2,7 @@
 const path = require("path");
 const fs = require("fs");
 const chalk = require('chalk');
-const {sql,redis} = require(path.join(__dirname, "./ps"));
+const { sql, redis } = require(path.join(__dirname, "./ps"));
 const settings = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../data/settings.json"))
 );
@@ -43,20 +43,16 @@ module.exports = async function settingread(arg, from, sender, groupname, client
     random = settings.prefixchoice.charAt(
         Math.floor(Math.random() * settings.prefixchoice.length))
     try {
-        botdata = await redis.hgetall('botdata');
-        if (botdata === null) {
-            let botdata = await sql.query(
-                "select * from botdata;"
-            );
-            redis.hmset('botdata', botdata )
-        }
+        botdata = await redis.get('botdata');
+        botdata = JSON.parse(botdata)
 
         if (from.endsWith("@g.us")) {
-            data1 = await hgetall(from)
+            data1 = await redis.get(from)
+            data1 = JSON.parse(data1);
             if (data1 === null) {
                 if (process.env.NODE_ENV === 'development') {
                     console.log("👪 " + chalk.bgCyan("Prefix assigned is / for group " + groupname));
-                    await sql.query(
+                    await sql(
                         `INSERT INTO groupdata VALUES ('${from}','true','/','false','true', '{''}',0,0,false,true);`
                     );
                     const gd = {
@@ -71,7 +67,7 @@ module.exports = async function settingread(arg, from, sender, groupname, client
                         "autosticker": false,
                         "nsfw": true
                     };
-                    redis.hmset(from, gd)
+                    redis.set(from, JSON.stringify(gd))
                     return settingread(arg, from, sender, groupname)
 
                 }
@@ -98,10 +94,10 @@ module.exports = async function settingread(arg, from, sender, groupname, client
                         "autosticker": false,
                         "nsfw": true
                     }
-                    await sql.query(
+                    await sql(
                         `INSERT INTO groupdata VALUES ('${from}','true','${random}','false','true', '{''}',0,0,false,true);`
                     );
-                    redis.hmset(from, gd)
+                    redis.set(from, JSON.stringify(gd))
                     return settingread(arg, from, sender, groupname)
                 }
             }
@@ -114,14 +110,14 @@ module.exports = async function settingread(arg, from, sender, groupname, client
         data2 = await redis.hgetall(number);
         if (data2 === null) {
             console.log("👨 " + chalk.bgBlueBright("Entering data for  number -" + number));
-            await sql.query(`INSERT INTO messagecount VALUES ('${number}', 0, 0, false);`)
+            await sql(`INSERT INTO messagecount VALUES ('${number}', 0, 0, false);`)
             const md = {
                 "phonenumber": number,
                 "totalmsgtoday": 0,
                 "totalmsg": 0,
                 "dailylimitover": false
             }
-            redis.hmset(number,md)
+            redis.hmset(number, md)
             return settingread(arg, from, sender, groupname)
         }
 
@@ -140,8 +136,8 @@ module.exports = async function settingread(arg, from, sender, groupname, client
             abusepresent: from.endsWith("@g.us") ? data1.allowabuse == 0 ? arg.detecta() : [] : arg.detecta(),
             canmemberusebot: from.endsWith("@g.us") ? data1.membercanusebot == false ? false : true : true,
             isnumberblockedingroup: from.endsWith("@g.us") ? data1.banned_users.includes(number) ? 1 : 0 : 0,
-            groupdata: from.endsWith("@g.us") ? data1  : 0,
-            botdata: botdata ,
+            groupdata: from.endsWith("@g.us") ? data1 : 0,
+            botdata: botdata,
             sender: sender,
             stanzaId: stanzaId,
             isMedia: isMedia
@@ -151,13 +147,3 @@ module.exports = async function settingread(arg, from, sender, groupname, client
         console.log(error);
     }
 };
-
-
-
-
-
-(async () => {
-    v = await redis.hgetall('tesst');
-    console.log(v);
-    redis.quit()
-})();

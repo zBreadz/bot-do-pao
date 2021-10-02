@@ -14,7 +14,7 @@ const {
   switchcase
 } = require(path.join(__dirname, "../snippets/case"));
 let qri = require("qr-image");
-const sql = require(path.join(__dirname, "../snippets/ps"));
+const {sql} = require(path.join(__dirname, "../snippets/ps"));
 const {
   count
 } = require(path.join(__dirname, "../snippets/count"));
@@ -26,7 +26,7 @@ const chalk = require('chalk');
 
 async function connect() {
   try {
-    auth_result = await sql.query("select * from auth;");
+    auth_result = await sql("select * from auth;");
     console.log("Fetching login data...");
     auth_row_count = await auth_result.rowCount;
     if (auth_row_count == 0) {
@@ -75,7 +75,7 @@ async function connect() {
 
     if (auth_row_count == 0) {
       console.log("Inserting login data...");
-      sql.query("INSERT INTO auth VALUES($1,$2,$3,$4,$5);", [
+      sql("INSERT INTO auth VALUES($1,$2,$3,$4,$5);", [
         load_clientID,
         load_serverToken,
         load_clientToken,
@@ -85,7 +85,7 @@ async function connect() {
       console.log("New login data inserted!");
     } else {
       console.log("Updating login data....");
-      sql.query(
+      sql(
         "UPDATE auth SET clientid = $1, servertoken = $2, clienttoken = $3, enckey = $4, mackey = $5;",
         [
           load_clientID,
@@ -95,16 +95,16 @@ async function connect() {
           load_macKey,
         ]
       );
-      sql.query("commit;");
+      sql("commit;");
       console.log("Login data updated!");
     }
   } catch (err) {
     console.error(err);
     if (err.message.startsWith("Unexpected error in login")) {
       console.log("Please check your credentials")
-      await sql.query('UPDATE botdata SET isconnected = false;')
+      await sql('UPDATE botdata SET isconnected = false;')
       console.log("isconnected set to false");
-      await sql.query("DROP TABLE auth;");
+      await sql("DROP TABLE auth;");
       console.log("auth dropped");
       client.close();
       client.logout();
@@ -112,7 +112,7 @@ async function connect() {
       process.exit(1);
     }
     console.log("Creating database...");
-    await sql.query(
+    await sql(
       "CREATE TABLE IF NOT EXISTS auth(clientID text, serverToken text, clientToken text, encKey text, macKey text);"
     );
     await connect();
@@ -120,7 +120,7 @@ async function connect() {
 }
 async function main() {
   (async function () {
-    qqr = await sql.query("SELECT count(*) from messagecount;")
+    qqr = await sql("SELECT count(*) from messagecount;")
     if (qqr.rows[0].count === 0) {
       console.log("New bot!, changing its dp and name!");
       client.updateProfileName("xxx-bot");
@@ -137,7 +137,7 @@ async function main() {
     client.autoReconnect = ReconnectMode.onConnectionLost;
     client.connectOptions.maxRetries = 100;
     console.log("Hello " + client.user.name);
-    sql.query('UPDATE botdata SET isconnected = true;')
+    sql('UPDATE botdata SET isconnected = true;')
 
     client.on('CB:Call', async json => {
       let number = json[1]['from'];
@@ -227,7 +227,7 @@ async function main() {
           !infor.botdata.moderators.includes(infor.number) &&
           infor.dailylimitover === false
         ) {
-          sql.query(`UPDATE messagecount SET dailylimitover = true WHERE phonenumber ='${infor.number}';`)
+          sql(`UPDATE messagecount SET dailylimitover = true WHERE phonenumber ='${infor.number}';`)
           client.sendMessage(infor.sender, "🤖 ```You have exhausted your daily limit, the bot will not reply you anymore.```", text, {
             quoted: xxx5,
           });
@@ -265,15 +265,15 @@ async function main() {
 async function stop() {
   client.close();
   console.log("Stopped");
-  await sql.query('UPDATE botdata SET isconnected = false;')
+  await sql('UPDATE botdata SET isconnected = false;')
 }
 async function isconnected() {
   return client.state;
 }
 async function logout() {
-  sql.query('UPDATE botdata SET isconnected = false;')
+  sql('UPDATE botdata SET isconnected = false;')
   console.log("isconnected set to false");
-  sql.query("DROP TABLE auth;");
+  sql("DROP TABLE auth;");
   console.log("auth dropped");
   client.close();
   client.logout();
