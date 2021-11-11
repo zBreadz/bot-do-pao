@@ -1,7 +1,7 @@
-<h1 align="center">🤖 XXX WHATSAPP BOT 🤖</h1>
+<h1 align="center">🍞 BOT DO PÃO 🍞</h1>
 
 <p align="center">
-<img src="docs/images/xxxlogo.jpeg" width=300px alt="xxxlogo" />
+<img src="https://i.imgur.com/6RgPhRJ.jpeg" width=300px alt="xxxlogo" />
 </p>
 
 ## 💮 Want your own bot?
