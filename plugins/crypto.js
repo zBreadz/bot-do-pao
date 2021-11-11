@@ -17,7 +17,7 @@ const requestOptions = {
   qs: {
     start: "1",
     limit: "5000",
-    convert: "USD",
+    convert: "BRL",
   },
   headers: {
     "X-CMC_PRO_API_KEY": process.env.COINMARKETCAP_API_KEY,
@@ -42,7 +42,7 @@ const crypto = (Infor, client, xxx3) =>
       return
     }
     if (process.env.COINMARKETCAP_API_KEY === undefined) {
-      client.sendMessage(from, "🤖 ```COINMARKETCAP_API_KEY environment variable is not set. Contact the bot owner.```"
+      client.sendMessage(from, "🤖 ```COINMARKETCAP_API_KEY não está configurada. Entre em contato com o dono do bot.```"
         , text, {
         quoted: xxx
       })
@@ -51,7 +51,7 @@ const crypto = (Infor, client, xxx3) =>
     }
     if (!coins.includes(arg[1].toUpperCase())) {
 
-      client.sendMessage(from, "🤖 ```Not in coinmarketcap.```", text, {
+      client.sendMessage(from, "🤖 ```Não há informações no CoinMarketCap.```", text, {
         quoted: xxx,
       });
       resolve();
@@ -70,18 +70,18 @@ const crypto = (Infor, client, xxx3) =>
                 "*USDT*" +
                 " 💹 *Coinmarketcap*" +
                 "\n\n" +
-                "```Buy price  : ```" +
+                "```Valor de compra  : R$```" +
                 c.price.toFixed(3) +
                 "\n" +
-                "```1h change  : ```" +
+                "```Variação / 1h  : ```" +
                 c.percent_change_1h.toFixed(2) +
                 " ```%```" +
                 "\n" +
-                "```24h change : ```" +
+                "```Variação / 24h : ```" +
                 c.percent_change_24h.toFixed(2) +
                 " ```%```" +
                 "\n" +
-                "```market cap : ```" +
+                "```Valor de mercado : ```" +
                 c.market_cap.toFixed(2) +
                 "\n";
 

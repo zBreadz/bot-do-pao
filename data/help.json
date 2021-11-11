@@ -91,7 +91,7 @@
         ]
     },
     "crypto": {
-        "usage": "crypto <coinsymbol>",
+        "usage": "crypto <simbolo da moeda>",
         "desc": "```Busca o preço de uma determinada criptomoeda em coinmarketcap usando sua API.```",
         "eg": [
             "crypto btc",
@@ -114,7 +114,7 @@
         ]
     },
     "nsfw": {
-        "usage": "nsfw <condition>",
+        "usage": "nsfw <condição>",
         "desc": "```Se estiver ativado, o bot examinará a imagem em busca de nudez antes de convertê-la em adesivo no grupo.```",
         "eg": [
             "nsfw on",
@@ -122,7 +122,7 @@
         ]
     },
     "autosticker": {
-        "usage": "autosticker <condition>",
+        "usage": "autosticker <condição>",
         "desc": "```Faz automaticamente um adesivo de qualquer mídia enviada no grupo.```",
         "eg": [
             "autosticker on",
@@ -139,7 +139,7 @@
         ]
     },
     "useprefix": {
-        "usage": "useprefix <condition>",
+        "usage": "useprefix <condição>",
         "desc": "```Se você quiser usar o bot sem um prefixo, desative esta opção.```",
         "eg": [
             "useprefix on",
@@ -147,7 +147,7 @@
         ]
     },
     "botaccess": {
-        "usage": "botaccess <condition>",
+        "usage": "botaccess <condição>",
         "desc": "```Não administradores não poderão usar o bot se ele estiver desligado.```",
         "eg": [
             "botaccess off",
@@ -162,7 +162,7 @@
         ]
     },
     "filterabuse": {
-        "usage": "filterabuse <condition>",
+        "usage": "filterabuse <condição>",
         "desc": "```Se ativado, o bot irá pesquisar por palavrões no comando e responder de volta com a mesma palavra!```",
         "eg": [
             "filterabuse on",
@@ -170,7 +170,7 @@
         ]
     },
     "market": {
-        "usage": "market <arguments>",
+        "usage": "market <sub-comandos>",
         "desc": "```Busca as informações de um determinado símbolo do NSE. Os argumentos que pode assumir são, \n📱 status - Fornece o status do mercado. \n📱 search <nome> - Ele pesquisará todas as empresas com este nome. \n📱 details <key> - Fornecerá todos os detalhes do estoque de NSE. \n📱 losers - Isso dará os 10 maiores perdedores de NSE. \n📱 gainers - Isso dará os 10 maiores ganhadores de NSE.```",
         "eg": [
             "market status",
@@ -181,7 +181,7 @@
         ]
     },
     "sticker": {
-        "usage": "sticker <arguments>",
+        "usage": "sticker <sub-comandos>",
         "desc": "```Converte a imagem, imagem marcada ou vídeo com duração inferior a 11 segundos em adesivo.```",
         "eg": [
             "sticker crop nodata",

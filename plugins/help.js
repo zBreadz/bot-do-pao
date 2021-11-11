@@ -12,7 +12,7 @@ const getGroupAdmins = (participants) => {
   }
   return admins;
 };
-total = 0, version = "";
+total = 0, version = "1.0";
 const axios = require('axios');
 
 try {
@@ -56,7 +56,7 @@ const help = (Infor, client, xxx3, syntax) =>
     let prefix = Infor.groupdata.prefix;
     let useprefix = Infor.groupdata.useprefix;
     let msg;
-    const c = prefix == undefined ? "```Not needed in inbox```" : useprefix ? prefix : "( " + prefix + " )" + " ```Disabled```";
+    const c = prefix == undefined ? "```Não é necessário prefixo no PV```" : useprefix ? prefix : "( " + prefix + " )" + " ```Desabilitado```";
     if (prefix == undefined || !useprefix) prefix = "🎀";
 
     if (arg.length == 1) {
@@ -71,7 +71,7 @@ const help = (Infor, client, xxx3, syntax) =>
         "\n\n" +
         "📗 *Geral* :\n ```help, faq, limit, delete, sourcecode, invite```\n\n" +
         grpcmds +
-        "📱 *Mídia* :\n```ss, sticker, rs, lyrics, ytv, shorturl, testnsfw, run, crypto, pin, rashmika```\n\n" +
+        "📱 *Mídia* :\n```ss, sticker, rs, lyrics, ytv, shorturl, testnsfw, run, crypto, pin```\n\n" +
         cas +
         "🎁 *Para mais informações :*\n" +
         prefix +
