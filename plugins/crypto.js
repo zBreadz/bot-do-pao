@@ -67,10 +67,10 @@ const crypto = (Infor, client, xxx3) =>
                 "* " +
                 "/" +
                 " " +
-                "*USDT*" +
+                "*USD*" +
                 " 💹 *Coinmarketcap*" +
                 "\n\n" +
-                "```Valor de compra  : R$```" +
+                "```Valor de compra  : ```" +
                 c.price.toFixed(3) +
                 "\n" +
                 "```Variação / 1h  : ```" +
