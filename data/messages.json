@@ -1,29 +1,29 @@
 {
     "salutations": [
         "👋 ```Hey```",
-        "👋 ```Hello```",
-        "👋 ```hi```"
+        "👋 ```Oiiii```",
+        "👋 ```Hellooooooo```"
     ],
-    "disabled":    "😢 ```Feature down```",
-    "success":     "✅ ```Successful```",
-    "noenv":       "🛠️ ```Environment variable not set.```",
-    "tag":         "🌌 ```Reply to a media.```",
-    "tagtext"   :  "📑 ```Reply to a code.```",
-    "grouplimit":  "🎫 ```Daily group credits exhausetd.```",
-    "userlimit" :  "💳 ```Daily credits exhausetd.```",
-    "limit"     :  "💳 ```Daily credit used: ```",
+    "disabled":    "😢 ```Recurso desativado```",
+    "success":     "✅ ```Sucesso```",
+    "noenv":       "🛠️ ```Variável de ambiente não definida.```",
+    "tag":         "🌌 ```Responda uma foto/gif```",
+    "tagtext"   :  "📑 ```Responda um código```",
+    "grouplimit":  "🎫 ```Créditos diários do grupo esgotados.```",
+    "userlimit" :  "💳 ```Créditos diários esgotados.```",
+    "limit"     :  "💳 ```Crédito diário usado: ```",
   
     "error": {
-        "invalid": "🌐 ```Invalid link```",
-        "error":   "❎ ```Error```"
+        "invalid": "🌐 ```Link inválido```",
+        "error":   "❎ ```Erro```"
     },
     
     "only": {
-        "group":  "👩‍👩‍👦‍👦 ```This command can only be used in groups!```",
-        "ownerG": "💎 ```This command can only be used by the group owner!```",
-        "ownerB": "🎩 ```This command can only be used by the bot owner!```",
-        "modB":   "👮 ```This command can only be used by the bot moderators!```",
-        "admin":  "🛡️ ```This command can only be used by the admins!```",
-        "Badmin": "🤖 ```This command can only be used when the bot is admin!```"
+        "group":  "👩‍👩‍👦‍👦 ```Este comando só pode ser usado em grupos!```",
+        "ownerG": "💎 ```Este comando só pode ser usado pelo proprietário do grupo!```",
+        "ownerB": "🎩 ```Este comando só pode ser usado pelo proprietário do bot!```",
+        "modB":   "👮 ```Este comando só pode ser usado pelos moderadores do bot!```",
+        "admin":  "🛡️ ```Este comando só pode ser usado pelos administradores!```",
+        "Badmin": "🤖 ```Este comando só pode ser usado quando o bot é admin!```"
     }
 }

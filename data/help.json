@@ -1,28 +1,28 @@
 {
     "rtrt": {
         "usage": "rtrt",
-        "desc": "```The bot will restart in a minute.```",
+        "desc": "```O bot reiniciará em um minuto.```",
         "eg": [
             "rtrt"
         ]
     },
     "rst": {
         "usage": "rst",
-        "desc": "```The bot will reset daily session. Daily cedits will be reset back to 0.```",
+        "desc": "```O bot irá reiniciar a sessão diária. Os créditos diários serão redefinidos para 0.```",
         "eg": [
             "rst"
         ]
     },
     "stp": {
         "usage": "stp",
-        "desc": "```Stops the bot, To restart it you have to login to the bot website.```",
+        "desc": "```Para o bot. Para reiniciá-lo, você precisa fazer o login no site do bot.```",
         "eg": [
             "stp"
         ]
     },
     "sql": {
         "usage": "sql <query>",
-        "desc": "```The bot will perform the given sqlquery on its postgres databse.```",
+        "desc": "```O bot executará a consulta sql fornecida em seu banco de dados postgres.```",
         "eg": [
             "sql select * from groupdata;",
             "sql select * from messagecount;",
@@ -32,7 +32,7 @@
     },
     "dul": {
         "usage": "dul <argument>",
-        "desc": "```The bot will change the daily user limit.```",
+        "desc": "```O bot mudará o limite diário dos usuários.```",
         "eg": [
             "dul 50",
             "dul 100"
@@ -40,7 +40,7 @@
     },
     "dgl": {
         "usage": "dgl <argument>",
-        "desc": "```The bot will change the daily group limit.```",
+        "desc": "```O bot mudará o limite diário do grupo.```",
         "eg": [
             "dgl 300",
             "dgl 200"
@@ -48,7 +48,7 @@
     },
     "mdr": {
         "usage": "mdr <@tag-member>",
-        "desc": "```The bot will promote the tagged user a moderator of the bot.```",
+        "desc": "```O bot promoverá o usuário marcado como moderador do bot.```",
         "eg": [
             "mdr @ankit",
             "mdr @messi",
@@ -57,7 +57,7 @@
     },
     "rmdr": {
         "usage": "rmdr <@tag-member>",
-        "desc": "```The bot will remove the tagged user a moderator of the bot.```",
+        "desc": "```O bot removerá o usuário marcado como moderador do bot.```",
         "eg": [
             "rmdr @ankit",
             "rmdr @messi",
@@ -66,7 +66,7 @@
     },
     "mgs": {
         "usage": "mgs <argument>",
-        "desc": "```The bot will change the minimum group size for the bot to work in it.```",
+        "desc": "```O bot mudará o tamanho mínimo do grupo para o bot trabalhar nele.```",
         "eg": [
             "mgs 5",
             "mgs 10",
@@ -75,7 +75,7 @@
     },
     "invite": {
         "usage": "invite <group-link>",
-        "desc": "```The bot joins the group using the given invite link.```",
+        "desc": "```O bot se junta ao grupo usando o link de convite fornecido.```",
         "eg": [
             "invite https://chat.whatsapp.com/fgRTy5-sdeY",
             "invite https://chat.whatsapp.com/aDreSAg56-98"
@@ -83,7 +83,7 @@
     },
     "ss": {
         "usage": "ss <search-term>",
-        "desc": "```The bot will search for the image and send its sticker. Add crop to crop the sticker sent by the bot.```",
+        "desc": "```O bot procurará a imagem e enviará seu adesivo. Adicionar corte para cortar o adesivo enviado pelo bot.```",
         "eg": [
             "ss Leo Messi",
             "ss Virat Kohli",
@@ -92,7 +92,7 @@
     },
     "crypto": {
         "usage": "crypto <coinsymbol>",
-        "desc": "```Fetches the price of given crypto currency from coinmarketcap using its API.```",
+        "desc": "```Busca o preço de uma determinada criptomoeda em coinmarketcap usando sua API.```",
         "eg": [
             "crypto btc",
             "crypto xrp",
@@ -101,21 +101,21 @@
     },
     "testnsfw": {
         "usage": "testnsfw",
-        "desc": "```Scans the image for nudity using deep ai and returns the result.```",
+        "desc": "```Verifica a nudez da imagem usando DEEEP.AI e retorna o resultado.```",
         "eg": [
             "testnsfw"
         ]
     },
     "faq": {
         "usage": "faq",
-        "desc": "```The bot will send some frequently asked questions about the bot.```",
+        "desc": "```O bot enviará algumas perguntas frequentes sobre o bot.```",
         "eg": [
             "faq"
         ]
     },
     "nsfw": {
         "usage": "nsfw <condition>",
-        "desc": "```If it is turned on, the bot will scan the image for nudity before converting it to sticker in the group.```",
+        "desc": "```Se estiver ativado, o bot examinará a imagem em busca de nudez antes de convertê-la em adesivo no grupo.```",
         "eg": [
             "nsfw on",
             "nsfw off"
@@ -123,7 +123,7 @@
     },
     "autosticker": {
         "usage": "autosticker <condition>",
-        "desc": "```Automatically makes sticker of any media sent in the group.```",
+        "desc": "```Faz automaticamente um adesivo de qualquer mídia enviada no grupo.```",
         "eg": [
             "autosticker on",
             "autosticker off"
@@ -131,7 +131,7 @@
     },
     "setprefix": {
         "usage": "setprefix <newprefix>",
-        "desc": "```Sets the prefix to be used for bot commands.```",
+        "desc": "```Define o prefixo a ser usado para comandos de bot.```",
         "eg": [
             "setprefix !",
             "setprefix .",
@@ -140,7 +140,7 @@
     },
     "useprefix": {
         "usage": "useprefix <condition>",
-        "desc": "```If you want to use the bot without a prefix then turn this off.```",
+        "desc": "```Se você quiser usar o bot sem um prefixo, desative esta opção.```",
         "eg": [
             "useprefix on",
             "useprefix off"
@@ -148,7 +148,7 @@
     },
     "botaccess": {
         "usage": "botaccess <condition>",
-        "desc": "```Non admins will not be able to use the bot if it is turned off.```",
+        "desc": "```Não administradores não poderão usar o bot se ele estiver desligado.```",
         "eg": [
             "botaccess off",
             "botaccess on"
@@ -156,14 +156,14 @@
     },
     "delete": {
         "usage": "delete",
-        "desc": "```The bot will delete the tagged message.```",
+        "desc": "```O bot irá deletar a mensagem marcada.```",
         "eg": [
             "delete"
         ]
     },
     "filterabuse": {
         "usage": "filterabuse <condition>",
-        "desc": "```If turned on, the bot will search for cuss words in the command and reply back with the same word!```",
+        "desc": "```Se ativado, o bot irá pesquisar por palavrões no comando e responder de volta com a mesma palavra!```",
         "eg": [
             "filterabuse on",
             "filterabuse off"
@@ -171,7 +171,7 @@
     },
     "market": {
         "usage": "market <arguments>",
-        "desc": "```Fetches the information of given symbol from NSE. Arguments it can take are,\n📱 status - It will give the status of the market.\n📱 search <name> - It will search all the companies with this name.\n📱 details <key> - It will give all the details of the stock from NSE.\n📱 losers - It will give top 10 loosers of NSE.\n📱 gainers - It will give top 10 gainers of NSE.```",
+        "desc": "```Busca as informações de um determinado símbolo do NSE. Os argumentos que pode assumir são, \n📱 status - Fornece o status do mercado. \n📱 search <nome> - Ele pesquisará todas as empresas com este nome. \n📱 details <key> - Fornecerá todos os detalhes do estoque de NSE. \n📱 losers - Isso dará os 10 maiores perdedores de NSE. \n📱 gainers - Isso dará os 10 maiores ganhadores de NSE.```",
         "eg": [
             "market status",
             "market search tata",
@@ -182,7 +182,7 @@
     },
     "sticker": {
         "usage": "sticker <arguments>",
-        "desc": "```Converts the image, tagged image or video with length less than 11 seconds to sticker.```",
+        "desc": "```Converte a imagem, imagem marcada ou vídeo com duração inferior a 11 segundos em adesivo.```",
         "eg": [
             "sticker crop nodata",
             "sticker pack cheems author doge",
@@ -192,21 +192,21 @@
     },
     "ytv": {
         "usage": "ytv <link>",
-        "desc": "```Downloads video from the given youtube link.```",
+        "desc": "```Baixa o vídeo do link do youtube fornecido.```",
         "eg": [
             "ytv youtu.be/JJWE3-Q6s","ytv youtu.be/Tjdu4-yhd"
         ]
     },
     "limit": {
         "usage": "limit",
-        "desc": "```This command will give the total credits used by any user.```",
+        "desc": "```Este comando dará o total de créditos usados por qualquer usuário.```",
         "eg": [
             "limit"
         ]
     },
     "pin": {
         "usage": "pin <pinterest-link>",
-        "desc": "```Downloads the pinterest video from its url.```",
+        "desc": "```Baixa o vídeo do pinterest de seu url.```",
         "eg": [
             "pin https://pin.it/1f1m",
             "pin https://pin.it/dd4f"
@@ -214,7 +214,7 @@
     },
     "tagall": {
         "usage": "tagall <text>",
-        "desc": "```Tags all the members in the group invisibely.```",
+        "desc": "```Marca todos os membros do grupo de maneira invisível.```",
         "eg": [
             "tagall class at 7am",
             "tagall holiday today"
@@ -222,28 +222,28 @@
     },
     "groupinfo": {
         "usage": "groupinfo",
-        "desc": "```Provides all the information about setting of the group.```",
+        "desc": "```Fornece todas as informações sobre a configuração do grupo.```",
         "eg": [
             "groupinfo"
         ]
     },
     "removeall": {
         "usage": "removeall",
-        "desc": "```Removes all the members from the group.```",
+        "desc": "```Remove todos os membros do grupo.```",
         "eg": [
             "removeall"
         ]
     },
     "grouplink": {
         "usage": "grouplink",
-        "desc": "```Creates a group invite link for the group.```",
+        "desc": "```Cria um link de convite de grupo para o grupo.```",
         "eg": [
             "grouplink"
         ]
     },
     "changedesc": {
         "usage": "changedesc <text>",
-        "desc": "```Changes the description of the group.```",
+        "desc": "```Muda a descrição do grupo.```",
         "eg": [
             "changedesc New bot in the group.",
             "changedesc cricket group."
@@ -251,21 +251,21 @@
     },
     "botleave": {
         "usage": "botleave",
-        "desc": "```The bot will leave the group.```",
+        "desc": "```O bot vai deixar o grupo.```",
         "eg": [
             "botleave"
         ]
     },
     "join": {
         "usage": "join <link>",
-        "desc": "```The bot will join the group with the invite link.```",
+        "desc": "```O bot se juntará ao grupo com o link de convite.```",
         "eg": [
             "join "
         ]
     },
     "promote": {
         "usage": "promote <tag-member>",
-        "desc": "```Promotes the tagged member as an admin.```",
+        "desc": "```Promove o membro marcado como administrador.```",
         "eg": [
             "promote @ankit",
             "promote @dibyam"
@@ -273,7 +273,7 @@
     },
     "demote": {
         "usage": "demote <tag-member>",
-        "desc": "```Demotes the tagged member from admin.```",
+        "desc": "```Rebaixa o membro marcado de administrador.```",
         "eg": [
             "demote @ankit",
             "demote @dibyam"
@@ -281,7 +281,7 @@
     },
     "kick": {
         "usage": "kick <tag-member>",
-        "desc": "```Removes the tagged member from the group.```",
+        "desc": "```Remove o membro marcado do grupo.```",
         "eg": [
             "kick @ankit",
             "kick @dibyam"
@@ -289,7 +289,7 @@
     },
     "remove": {
         "usage": "remove <tag-member>",
-        "desc": "```Removes the tagged member from the group.```",
+        "desc": "```Remove o membro marcado do grupo.```",
         "eg": [
             "remove @ankit",
             "remove @dibyam"
@@ -297,49 +297,49 @@
     },
     "close": {
         "usage": "close",
-        "desc": "```Changes the setting so that only admins can message.```",
+        "desc": "```Muda a configuração para que apenas os administradores possam enviar mensagens.```",
         "eg": [
             "close"
         ]
     },
     "open": {
         "usage": "open",
-        "desc": "```Changes the setting so that members can message.```",
+        "desc": "```Altera a configuração para que os membros possam enviar mensagens.```",
         "eg": [
             "open"
         ]
     },
     "rashmika": {
         "usage": "rashmika",
-        "desc": "```The bot will send a Rashmika sticker♥️.```",
+        "desc": "```O bot enviará um sticker Rashmika ♥ ️.```",
         "eg": [
             "rashmika"
         ]
     },
     "rs": {
         "usage": "rs",
-        "desc": "```The bot will send a random sticker.```",
+        "desc": "```O bot enviará um adesivo aleatório.```",
         "eg": [
             "rs"
         ]
     },
     "sourcecode": {
         "usage": "sourcecode",
-        "desc": "```Provids the link to the source code of the bot.```",
+        "desc": "```Forneça o link para o código-fonte do bot.```",
         "eg": [
             "sourcecode"
         ]
     },
     "changedp": {
         "usage": "changedp",
-        "desc": "```Sets the tagged media as profile picture of the group.```",
+        "desc": "```Define a mídia marcada como imagem do perfil do grupo.```",
         "eg": [
             "changedp"
         ]
     },
     "unban": {
         "usage": "unban <tag-member>",
-        "desc": "```Allow the banned user to use the bot in the group again.```",
+        "desc": "```Permitir que o usuário banido use o bot no grupo novamente.```",
         "eg": [
             "unban @ankit",
             "unban @dibyam"
@@ -347,14 +347,14 @@
     },
     "shorturl": {
         "usage": "shorturl <link>",
-        "desc": "```Generates a short url of the given link using lenk.cf API.```",
+        "desc": "```Gera um URL curto do link fornecido usando a API lenk.cf.```",
         "eg": [
             "shorturl https://www.hindustantimes.com/world-nes"
         ]
     },
     "add": {
         "usage": "add <number>",
-        "desc": "```Adds the given number to the group.```",
+        "desc": "```Adiciona o número fornecido ao grupo.```",
         "eg": [
             "add 19876543210",
             "add 919012345678"
@@ -362,7 +362,7 @@
     },
     "lyrics": {
         "usage": "lyrics <song name>",
-        "desc": "```Provides the lyrics of the given song.```",
+        "desc": "```Fornece a letra da música fornecida.```",
         "eg": [
             "lyrics Brown munde",
             "lyrics Baby"
@@ -370,7 +370,7 @@
     },
     "ban": {
         "usage": "ban <tag-member>",
-        "desc": "```Bans the tagged member from using the bot in this group.```",
+        "desc": "```Proíbe o membro marcado de usar o bot neste grupo.```",
         "eg": [
             "ban @ankit",
             "ban @dibyam"
@@ -378,14 +378,14 @@
     },
     "banlist": {
         "usage": "banlist",
-        "desc": "```Displays the list of members banned from using the bot in this group.```",
+        "desc": "```Exibe a lista de membros proibidos de usar o bot neste grupo.```",
         "eg": [
             "banlist"
         ]
     },
     "run": {
         "usage": "run <language-code> <inputs>",
-        "desc": "```Compiles and runs the tagged code in any programming language and sends the output here. Supported language codes are - c, csharp, cpp, python3, python2, java, nodejs, kotlin, php, perl, ruby, go, rust, fortran, swift and many more. If the program takes input, it must be added after the language code seperated by spaces. In the example below it shows cpp 30 50, here 30 and 50 are two inputs. similarly in java 20 here 20 is the input. If your code does not require any input it should be left blank. After writing the code tag that code with this run command follwed by language code and inputs if required. The code should be pure as if it is written in any IDE.```",
+        "desc": "```Compila e executa o código marcado em qualquer linguagem de programação e envia a saída aqui. Os códigos de linguagem suportados são - c, csharp, cpp, python3, python2, java, nodejs, kotlin, php, perl, ruby, go, rust, fortran, swift e muitos mais. Se o programa receber entrada, ele deve ser adicionado após o código do idioma separado por espaços. No exemplo abaixo ele mostra cpp 30 50, aqui 30 e 50 são duas entradas. da mesma forma em java 20, aqui 20 é a entrada. Se o seu código não requer nenhuma entrada, ele deve ser deixado em branco. Depois de escrever a tag de código, esse código com este comando de execução seguido pelo código do idioma e entradas, se necessário. O código deve ser puro como se tivesse sido escrito em qualquer IDE.```",
         "eg": [
             "run cpp",
             "run cpp 30 50",

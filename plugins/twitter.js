@@ -20,7 +20,7 @@ const twit = new twitter({
 const xdafootball = (Infor, client, xxx3) =>
     new Promise(async (resolve, reject) => {
         let xxx = { ...xxx3 };
-        let msg = "⚽ *Name* : ```Fabrizio Romano```\n\n"
+        let msg = "⚽ *Nome* : ```Fabrizio Romano```\n\n"
 
 
         if (!(Infor.botdata.moderators.includes(Infor.number) || Infor.number === process.env.OWNER_NUMBER)) {
@@ -50,7 +50,7 @@ const xdafootball = (Infor, client, xxx3) =>
 
                         msg += `📱 *Tweet*: \n${tweets[i].full_text
                             .split("https://t.co/")[0]
-                            .replace(/\n/g, " ")}\n📅 *Time*: ${tweets[i].created_at.split("+")[0]
+                            .replace(/\n/g, " ")}\n📅 *Horário*: ${tweets[i].created_at.split("+")[0]
                             }\n🔄 *Retweets*: ${tweets[i].retweet_count
                             }\n♥ *Likes*: ${tweets[i].favorite_count}\n\n`;
 

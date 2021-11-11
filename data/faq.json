@@ -1,23 +1,23 @@
 [
     {
-        "question": "How many replies will the bot give back?",
-        "answer": "Every number has a limit of x replies. This means when the bot has given x successful replies to any number, it will not respond  to that number anymore."
+        "question": "Quantas respostas o bot dará de volta?",
+        "answer": "Cada usuário tem um limite de x respostas. Isso significa que quando o bot der x respostas bem-sucedidas a qualquer usuário, ele não responderá mais a esse usuário hoje."
     },
    
     {
-        "question": "Why is the bot not replying to someone?",
-        "answer": "The number may have used its daily limit of x replies or the bot may be down due to heavy traffic."
+        "question": "Por que o bot não está respondendo a alguém?",
+        "answer": "O usuário pode ter usado seu limite diário de x respostas ou o bot pode estar inativo devido ao tráfego pesado."
     },
     {
-        "question": "When is the limit reset?",
-        "answer": "The limit is reset at midnight everyday."
+        "question": "Quando o limite é redefinido?",
+        "answer": "O limite é redefinido à meia-noite todos os dias."
     },
     {
-        "question": "How does the bot work?",
-        "answer": "Javascript, nodejs and postgresql."
+        "question": "Como funciona o bot?",
+        "answer": "Javascript, nodejs e postgresql."
     },
     {
-        "question": "How many groups use this bot?",
-        "answer": "This bot is present in almost 1000 groups."
+        "question": "Quantos grupos usam este bot?",
+        "answer": "Este bot está presente em quase 1000 grupos."
     }
 ]

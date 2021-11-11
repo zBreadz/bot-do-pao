@@ -1,7 +1,7 @@
 {
-  "name": "xxx-whatsapp-bot",
+  "name": "bot-do-pao",
   "version": "3.4.0",
-  "description": "Whatsapp bot that can convert images and videos into sticker, send crypto price updates, stock market updates, search internet for any stickers and send random stickers, download youtube and pinterest videos and do many more things.",
+  "description": "Um bot para você que deseja facilitar a vida!",
  
   "main": "src/app.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akm-akm/xxx-whatsapp-bot.git"
+    "url": "git+https://github.com/zBreadz/xxx-whatsapp-bot.git"
   },
   "keywords": [
     "whatsapp",
@@ -22,12 +22,12 @@
     "bot",
     "whatsapp bot"
   ],
-  "author": "ADITYA KUMAR MANDAL",
+  "author": "Davi -zBreadz- Oliveira",
   "license": "GNU General Public License v3.0",
   "bugs": {
-    "url": "https://github.com/akm-akm/xxx-whatsapp-bot/issues"
+    "url": "https://github.com/zBreadz/xxx-whatsapp-bot/issues"
   },
-  "homepage": "https://github.com/akm-akm/xxx-whatsapp-bot#readme",
+  "homepage": "https://github.com/zBreadz/xxx-whatsapp-bot#readme",
   "dependencies": {
     "@adiwajshing/baileys": "^3.5.2",
     "@ffmpeg-installer/ffmpeg": "^1.0.20",

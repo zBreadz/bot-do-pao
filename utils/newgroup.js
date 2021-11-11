@@ -17,11 +17,11 @@ const newgroup = (from, client, random) =>
     const groupMembers = groupMetadata.participants;
     const groupAdmins = getGroupAdmins(groupMembers);
     let newmsg =
-      "🤖🤖🤖  *XXX 🤖 BOT*  🤖🤖🤖\n\n" +
-      "🚨 *Prefix assigned is:* " +
+      "🍞🍞🍞  *BOT DO PÃO*  🍞🍞🍞\n\n" +
+      "🚨 *Use este prefixo para os comandos:* " +
       random +
-      "\n\n🚨 *The bot will only listen to commands starting with* " + random + "\n\n" +
-      "🚨 ```Type``` " + "```" + random + "```" + "```help to see the list of commands bot can follow.```\n\n" +
+      "\n\n🚨 *O bot só aceitará comandos com o prefixo* " + random + "\n\n" +
+      "🚨 ```Escreva``` " + "```" + random + "```" + "```help para ver a lista de comandos que o bot tem!```\n\n" +
       "🎀 *Example:* \n" +
       "🎁 ```" + random + "```" + "```help```\n" +
       "🎡 ```" + random + "```" + "```sticker crop```\n" +

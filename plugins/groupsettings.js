@@ -79,18 +79,18 @@ const grp = (Infor, client, xxx3) =>
 
       case "groupinfo":
         const grpdata =
-          "\n💮 *Title* : " + "*" + groupMetadata.subject + "*" +
-          "\n\n🏊 *Member* : " + "```" + groupMetadata.participants.length + "```" +
+          "\n💮 *Titulo* : " + "*" + groupMetadata.subject + "*" +
+          "\n\n🏊 *Membros* : " + "```" + groupMetadata.participants.length + "```" +
           "\n🏅 *Admins*  : " + "```" + groupAdmins.length + "```" +
-          "\n🎀 *Prefix*      : " + "```" + Infor.groupdata.prefix + "```" +
-          "\n💡 *Useprefix*        : " + "```" + Infor.groupdata.useprefix + "```" +
+          "\n🎀 *Prefixo*      : " + "```" + Infor.groupdata.prefix + "```" +
+          "\n💡 *Prefixo usado*        : " + "```" + Infor.groupdata.useprefix + "```" +
           "\n🐶 *Autosticker*    : " + "```" + Infor.groupdata.autosticker + "```" +
-          "\n🤖 *Botaccess*      : " + "```" + Infor.groupdata.membercanusebot + "```" +
-          "\n🌏 *Filterabuse*     : " + "```" + Infor.groupdata.allowabuse + "```" +
-          "\n⚠️ *NSFW detect*  : " + "```" + Infor.groupdata.nsfw + "```" +
-          "\n🎫 *Credits used*  : " + "```" + Infor.groupdata.totalmsgtoday + "```" +
-          "\n🧶 *Total credits*  : " + "```" + Infor.botdata.dailygrouplimit + "```" +
-          "\n🚨 *Banned users* : " + "```" + (Number(Infor.groupdata.banned_users.length) - 1) + "```\n";
+          "\n🤖 *Acesso ao bot*      : " + "```" + Infor.groupdata.membercanusebot + "```" +
+          "\n🌏 *Filtro de abuso*     : " + "```" + Infor.groupdata.allowabuse + "```" +
+          "\n⚠️ *detetectar NSFW*  : " + "```" + Infor.groupdata.nsfw + "```" +
+          "\n🎫 *Creditos usados*  : " + "```" + Infor.groupdata.totalmsgtoday + "```" +
+          "\n🧶 *Total de creditos*  : " + "```" + Infor.botdata.dailygrouplimit + "```" +
+          "\n🚨 *Usuários banidos* : " + "```" + (Number(Infor.groupdata.banned_users.length) - 1) + "```\n";
 
         try {
 
@@ -256,7 +256,7 @@ const grp = (Infor, client, xxx3) =>
         sql.query(
           `UPDATE groupdata SET prefix = '${arg[1]}' where groupid = '${from}';`
         );
-        client.sendMessage(from, "🚨 ```Prefix set to " + arg[1] + "```", text, {
+        client.sendMessage(from, "🚨 ```Novo prefixo selecionado: " + arg[1] + "```", text, {
           quoted: xxx,
         });
         newgroup(Infor.from, client, arg[1]);
@@ -432,7 +432,7 @@ const grp = (Infor, client, xxx3) =>
         break;
 
       case "botleave":
-        await client.sendMessage(from, "🤧 ```Bye, Miss you all ```", text);
+        await client.sendMessage(from, "🤧 ```Tchau, vou sentir falta de vocês ```", text);
 
         client.groupLeave(from);
         resolve();
@@ -597,7 +597,7 @@ const grp = (Infor, client, xxx3) =>
           z = mentioned[0].split("@")[0];
 
           if (z === `${client.user.jid}`.split("@")[0]) {
-            client.sendMessage(from, "🤖 ```I can't ban myself, but I can ban you! There you go!``` _BANNED_", text, {
+            client.sendMessage(from, "🤖 ```Eu não consigo me banir, mas consigo banir você, adeus!``` _BANNED_", text, {
               quoted: xxx,
             });
             sql.query(
@@ -662,7 +662,7 @@ const grp = (Infor, client, xxx3) =>
       case "banlist":
         bannedlist = Infor.groupdata.banned_users;
         if (bannedlist.length == 1) {
-          client.sendMessage(from, "🤖 *No users banned*", text, {
+          client.sendMessage(from, "🤖 *Nenhum usuário banido*", text, {
             quoted: xxx,
           });
           resolve();

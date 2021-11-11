@@ -7,12 +7,12 @@ const sourcecode = (Infor, client, xxx3) => new Promise((resolve, reject) => {
     const xxx = { ...xxx3 };
 
     const from = Infor.from;
-    axios.get(`https://api.github.com/repos/akm-akm/xxx-whatsapp-bot`)
+    axios.get(`https://api.github.com/repos/zbreadz/xxx-whatsapp-bot`)
         .then((response) => {
             let data = response.data;
 
-            msg = "\n🤖🤖🤖 *Sourcecode* 🤖🤖🤖\n\n" +
-                "🐱 *Github*\n```github.com/akm-akm/xxx-whatsapp-bot```\n\n" +
+            msg = "\n🤖🤖🤖 *Código fonte* 🤖🤖🤖\n\n" +
+                "🐱 *Github*\n```github.com/zbreadz/xxx-whatsapp-bot```\n\n" +
                 "👨‍💻 *Owner:* ```" + data.owner.login + "```\n" +
                 "💻 *Name:*  ```" + data.name + "```\n" +
                 "🉐 *Language:*     ```" + data.language + "```\n" +
@@ -22,7 +22,7 @@ const sourcecode = (Infor, client, xxx3) => new Promise((resolve, reject) => {
                 "🎨 *Watchers:*      ```" + data.watchers_count + "```\n" +
                 "💾 *Size:*               ```" + (data.size / 1024).toFixed(0) + " KB```\n" +
                 "📄 *License:*         ```" + data.license.key + " ```\n" +
-                "\n🤖 🤖 *_Bot made by AKM_* 🤖 🤖"
+                "\n🤖 🤖 *_Bot made by Davi -zBreadz- Oliveira_* 🤖 🤖"
 
 
             client.sendMessage(from,

@@ -16,7 +16,7 @@ total = 0, version = "";
 const axios = require('axios');
 
 try {
-  axios.get(`https://api.github.com/repos/akm-akm/xxx-whatsapp-bot/stats/commit_activity`)
+  axios.get(`https://api.github.com/repos/zBreadz/xxx-whatsapp-bot/stats/commit_activity`)
     .then((response) => {
       let data = response.data;
 
@@ -28,7 +28,7 @@ try {
       console.log("v", version);
     });
 } catch (error) {
-  axios.get(`https://api.github.com/repos/akm-akm/xxx-whatsapp-bot/stats/commit_activity`)
+  axios.get(`https://api.github.com/repos/zBreadz/xxx-whatsapp-bot/stats/commit_activity`)
     .then((response) => {
       let data = response.data;
 
@@ -66,24 +66,21 @@ const help = (Infor, client, xxx3, syntax) =>
 
       const grpcmds = (isGroup && (isGroupAdmins || Infor.number === process.env.OWNER_NUMBER || Infor.botdata.moderators.includes(Infor.number))) ? "👑 *Admin* :\n```groupinfo, promote, demote, kick, changedp, grouplink, botleave, setprefix, useprefix, autosticker, nsfw, close, open, tagall, ban, unban, banlist, filterabuse, botaccess```\n\n" : "";
       msg =
-        "🤖🤖🤖  *XXX 🤖 BOT*  🤖🤖🤖\n\n💡 *Prefix:*  " +
+        "🍞🍞🍞  *Bot do Pão*  🍞🍞🍞\n\n💡 *Prefixo:*  " +
         c +
         "\n\n" +
-        "📗 *General* :\n ```help, faq, limit, delete, sourcecode, invite```\n\n" +
+        "📗 *Geral* :\n ```help, faq, limit, delete, sourcecode, invite```\n\n" +
         grpcmds +
-        "📱 *Media* :\n```ss, sticker, rs, lyrics, ytv, shorturl, testnsfw, run, crypto, pin, rashmika```\n\n" +
+        "📱 *Mídia* :\n```ss, sticker, rs, lyrics, ytv, shorturl, testnsfw, run, crypto, pin, rashmika```\n\n" +
         cas +
-        "🎁 *For detailed info :*\n" +
+        "🎁 *Para mais informações :*\n" +
         prefix +
-        "```help <command>```\n\n" +
-        "🚄 *Example* :\n" +
+        "```help <comando>```\n\n" +
+        "🚄 *Exemplo* :\n" +
         prefix + "help crypto\n" +
         prefix + "help shorturl\n" +
         prefix + "help sticker\n" +
         prefix + "help run\n" +
-        "\n📃 *Bot News* :" +
-        "\n‼️ _Few admin commands are down_" +
-        "\n‼️ _ss feature will not work_" +
         "\n\n⚙️ *Bot version* : " + version;
 
 
@@ -95,16 +92,16 @@ const help = (Infor, client, xxx3, syntax) =>
 
       try {
         msg =
-          syntax == undefined ? "🔖 *Description* :\n" +
-            data[arg[1]].desc : "❎ *Error* :\n```syntax error in the given command.```\n" + "\n🔖 *Description* :\n" +
+          syntax == undefined ? "🔖 *Descrição* :\n" +
+            data[arg[1]].desc : "❎ *Erro* :\n```erro de syntax no comando.```\n" + "\n🔖 *Descrição* :\n" +
           data[arg[1]].desc
         msg += "\n\n" +
-          "📕 *Usage* :\n" +
+          "📕 *Usado* :\n" +
           prefix + "```" +
           data[arg[1]].usage +
           "```" +
           "\n\n" +
-          "📚 *Example* :\n";
+          "📚 *Exemplo* :\n";
         data[arg[1]].eg.forEach(currentItem => {
           msg += "```" + prefix + currentItem + "```" + "\n";
         });
@@ -117,7 +114,7 @@ const help = (Infor, client, xxx3, syntax) =>
       } catch (e) {
         client.sendMessage(
           from,
-          "🤖 ```No such command:``` " + arg[1],
+          "🤖 ```Não existe tal comando:``` " + arg[1],
           text,
           {
             quoted: xxx,

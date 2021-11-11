@@ -42,10 +42,10 @@ const youtube = (Infor, client, xxx3) =>
             });
           });
         })
-        const msg = "🎪 *Title  :*\n" + "```" +
+        const msg = "🎪 *Título  :*\n" + "```" +
           info.videoDetails.title +
           "```\n\n" +
-          "🍟 *Author :*  " +
+          "🍟 *Autor :*  " +
           "```" +
           info.videoDetails.author.name +
           "```\n" +
@@ -57,7 +57,7 @@ const youtube = (Infor, client, xxx3) =>
           "```" +
           info.videoDetails.likes +
           "```\n" +
-          "👎 *Disikes:*  " +
+          "👎 *Dislikes:*  " +
           "```" +
           info.videoDetails.dislikes +
           "```";

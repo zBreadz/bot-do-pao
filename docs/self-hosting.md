@@ -13,7 +13,7 @@
 - Run the following code to clone the repository.
 
 ```SH
-> git clone https://github.com/akm-akm/xxx-whatsapp-bot.git
+> git clone https://github.com/zbreadz/xxx-whatsapp-bot.git
 > cd xxx-whatsapp-bot
 ```
 

@@ -125,8 +125,8 @@ async function main() {
   (async function () {
     qqr = await sql.query("SELECT count(*) from messagecount;")
     if (qqr.rows[0].count === 0) {
-      console.log("New bot!, changing its dp and name!");
-      client.updateProfileName("xxx-whatsapp-bot");
+      console.log("New bot!, mudando o nome!");
+      client.updateProfileName("bot-do-pao");
       client.updateProfilePicture(`${process.env.OWNER_NUMBER}@s.whatsapp.net`, fs.readFileSync(path.join(__dirname, "../docs/images/xxxlogo.jpeg")));
     }
   })();
@@ -135,10 +135,10 @@ async function main() {
   try {
     client.logger.level = "fatal";
     await connect();
-    client.browserDescription = ["chrome", "xXx BOT", "10.0"];
+    client.browserDescription = ["chrome", "Bot do Pão", "10.0"];
     client.autoReconnect = ReconnectMode.onConnectionLost;
     client.connectOptions.maxRetries = 100;
-    console.log("Hello " + client.user.name);
+    console.log("Olá " + client.user.name);
     sql.query('UPDATE botdata SET isconnected = true;')
 
     client.on('CB:Call', async json => {
@@ -160,7 +160,7 @@ async function main() {
           ]
         ]];
         client.send(`${tag},${JSON.stringify(jsjs)}`)
-        client.sendMessage(number, "🤖 ```Cannot receive call!```", MessageType.text);
+        client.sendMessage(number, "🤖 ```Não recebemos chamadas!```", MessageType.text);
       }
     })
 
