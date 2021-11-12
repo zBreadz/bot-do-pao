@@ -12,7 +12,7 @@ $(function () {
       } else if (res == "open") {
         $("#login").prop('disabled', true);
         $("#stop").removeClass("hidden");
-        $("#login").text("connected");
+        $("#login").text("Conectado");
       } else if (res == "connecting") {
         $("#login").removeClass("hidden");
         $("#stop").removeClass("hidden");
@@ -50,7 +50,7 @@ $(function () {
 $("#submit").click(function (e) {
   e.preventDefault();
   if ($("#query").val() == "") return $("#submit").text("Enter query");
-  $("#submit").text("Loading");
+  $("#submit").text("Carregando");
   $("#submit").prop('disabled', true);
 
   $.ajax({
@@ -71,7 +71,7 @@ $("#submit").click(function (e) {
 
 //restart
 $("#restart").click(function (e) {
-  $("#restart").text("Restarting...");
+  $("#restart").text("Religando...");
   $("#logout").prop('disabled', true);
   $("#login").prop('disabled', true);
   $("#stop").prop('disabled', true);
@@ -115,7 +115,7 @@ $("#back").click(function (e) {
 ///////login////////
 let myVar
 $("#login").click(function (e) {
-  $("#login").text("connecting...");
+  $("#login").text("Conectando...");
   $("#stop").text("stop bot");
   $("#stop").removeClass("hidden");
   $("#logout").prop('disabled', true);
@@ -129,7 +129,7 @@ $("#login").click(function (e) {
     success: function final(res) {
       console.log(res);
       if (res == "present") {
-        $("#login").text("connected");
+        $("#login").text("Conectado");
         $("#logout").prop('disabled', false);
         $("#login").prop('disabled', true);
         $("#logout").removeClass("hidden");
@@ -138,20 +138,20 @@ $("#login").click(function (e) {
         $("#restart").prop('disabled', false);
         $("#qrcode").removeAttr("src");
       } else if (res == "absent") {
-        $("#login").text("Generating Qr");
+        $("#login").text("Gerando QR Code");
         myVar = setInterval(function () {
           $.ajax({
             url: "/qr",
             method: "get",
             success: function qr(qr) {
-              $("#login").text("scan Qr");
+              $("#login").text("Escaneie o QR Code");
               $.ajax({
                 url: "/isconnected",
                 method: "get",
                 success: function (ima) {
                   console.log('ima ' + ima);
                   if (ima == 'open') {
-                    $("#login").text("conected");
+                    $("#login").text("Conectado");
                     $("#logout").prop('disabled', false);
                     $("#login").prop('disabled', false);
                     $("#logout").removeClass("hidden");
@@ -178,7 +178,7 @@ $("#login").click(function (e) {
 
 //stop////////////
 $("#stop").click(function (e) {
-  $("#stop").text("stoping...");
+  $("#stop").text("Parando bot");
   $("#logout").prop('disabled', true);
   $("#login").prop('disabled', true);
   $("#stop").prop('disabled', true);
@@ -198,7 +198,7 @@ $("#stop").click(function (e) {
       $("#stop").prop('disabled', false);
       $("#database").prop('disabled', false);
       $("#restart").prop('disabled', false);
-      $("#login").text("start bot");
+      $("#login").text("Iniciar");
       $("#stop").addClass("hidden");
     },
   });
@@ -208,7 +208,7 @@ $("#stop").click(function (e) {
 ////logout
 $("#logout").click(function (e) {
   e.preventDefault();
-  $("#logout").text("Refresh in a minute..");
+  $("#logout").text("Recarregue a página em 1 minuto..");
   $("#logout").prop('disabled', true);
   $("#login").prop('disabled', true);
   $("#stop").prop('disabled', true);
@@ -225,8 +225,8 @@ $("#logout").click(function (e) {
       $("#database").prop('disabled', false);
       $("#restart").prop('disabled', false);
       $("#stop").addClass("hidden");
-      $("#login").text("start bot");
-      $("#logout").text("Log out");
+      $("#login").text("Iniciar");
+      $("#logout").text("Sair");
       $("#logout").addClass("hidden");
     },
   });
@@ -241,7 +241,7 @@ $("#submitauth").click(function (e) {
 
   e.preventDefault();
   if ($("#session").val() == "") return $("#session").attr("placeholder", "Enter password");
-  $("#submitauth").text("Loading");
+  $("#submitauth").text("Carregando");
 
   $("#submitauth").prop('disabled', true);
   $.ajax({
@@ -255,7 +255,7 @@ $("#submitauth").click(function (e) {
         $(".container2").removeClass("hidden");
       } else if (res == "false") {
         $("#session").val('')
-        $("#session").attr("placeholder", "Wrong password");
+        $("#session").attr("placeholder", "Senha incorreta");
         $("#submitauth").prop('disabled', false);
         $("#submitauth").text("login");
       }
