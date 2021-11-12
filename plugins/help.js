@@ -12,7 +12,7 @@ const getGroupAdmins = (participants) => {
   }
   return admins;
 };
-total = 0, version = "1.0";
+total = 0, version = "1.7";
 const axios = require('axios');
 
 try {
