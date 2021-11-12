@@ -30,8 +30,8 @@ const stickermaker = (Infor, client, xxx3) =>
       return `${Math.floor(Math.random() * 10000)}${ext}`;
     };
 
-    let packName = isGroup ? groupName : "xXx";
-    let authorName = "BOT";
+    let packName = isGroup ? groupName : "🍞🍞🍞";
+    let authorName = "Bot do pão";
 
     if (arg.includes("pack") == true) {
       packName = "";
