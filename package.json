@@ -46,7 +46,7 @@
     "twitter": "^1.7.1",
     "wa-sticker-formatter": "^4.2.0",
     "webp-converter": "^2.3.3",
-    "ytdl-core": "^4.9.2"
+    "ytdl-core": "github:fent/node-ytdl-core#d1f535712410eebd79a7468abd07d94f8c4ebe5a"
   },
   "devDependencies": {
     "dotenv": "^10.0.0"
