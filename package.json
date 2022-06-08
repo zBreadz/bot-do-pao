@@ -1,5 +1,6 @@
 {
   "name": "bot-do-pao",
+  "private": true,
   "version": "3.4.0",
   "description": "Um bot para você que deseja facilitar a vida!",
   "main": "src/app.js",
@@ -28,10 +29,11 @@
   },
   "homepage": "https://github.com/zBreadz/xxx-whatsapp-bot#readme",
   "dependencies": {
-    "@adiwajshing/baileys": "^3.5.2",
+    "@adiwajshing/baileys": "^3.5.3",
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
     "any-shell-escape": "^0.1.1",
     "axios": "^0.21.1",
+    "baileys": "^1.1.1",
     "chalk": "^4.1.2",
     "deepai": "^1.0.17",
     "express": "^4.17.1",
@@ -43,7 +45,7 @@
     "request": "^2.88.2",
     "solenolyrics": "^5.0.0",
     "twitter": "^1.7.1",
-    "wa-sticker-formatter": "^3.6.0",
+    "wa-sticker-formatter": "^4.3.2",
     "webp-converter": "^2.3.3",
     "ytdl-core": "^4.9.2"
   },

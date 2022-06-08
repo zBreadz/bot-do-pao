@@ -8,3 +8,4 @@ package-lock.json
 /*.jpeg
 pgdata
 /x.js
+npmPackage.tgz

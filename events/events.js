@@ -1,12 +1,12 @@
 const {
-  WAConnection,
+  makeWASocket,
   ReconnectMode,
   MessageType
 } = require("@adiwajshing/baileys");
 const {
   text
 } = MessageType;
-const client = new WAConnection();
+const client = new makeWASocket();
 client.version = [3, 3234, 9];
 
 
